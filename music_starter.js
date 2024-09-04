@@ -1,32 +1,37 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
+  //createCanvas (1280, 720, WEBGL)
   //colorMode(HSB, 100)
   background(0)
   textFont('Verdana'); // please use CSS safe fonts
-  //rectMode(CENTER)
+  rectMode(CENTER)
   textSize(24);
-
-//counter(intro)
-let circleSize = map(counter, 0, 40, 80, 220)
-let circleSize2 = map(counter, -4, 50, 30, 220)
-let circleSize3 = map(counter, -8, 60, -20, 220)
-let circleSize4 = map(counter, -12, 70, -70, 220)
+//hmghnghmgmghnghmn
+//counter(intro of my animation!)
+//let circleSize = map(counter, 0, 40, 40, 220)
+//let circleSize2 = map(counter, -4, 50, -10, 220)
+//let circleSize3 = map(counter, -8, 60, -60, 220)
+//let circleSize4 = map(counter, -12, 70, -90, 220)
 stroke (31, 17, 51)
-fill(31, 17, 51)
-  ellipse (250, 450, circleSize, circleSize)
- fill (54, 1, 133)
- ellipse (250, 450, circleSize2, circleSize2)
-fill (42, 1, 97)
-ellipse (250, 450, circleSize3, circleSize3)
- fill(24, 17, 33)
- ellipse (250, 450, circleSize4, circleSize4)
-   
+fill (38, 4, 79)
+  ellipse (640, 360, counter ** 2 / 100, counter ** 2 / 100)
+  fill(31, 17, 51)
+ ellipse (640, 360, counter ** 1 , counter ** 1)
+//fill (42, 1, 97)
+//ellipse (640, 360, counter * 3 / 30, counter * 3 / 30)
+//  fill(24, 17, 33)
+//  ellipse (640, 360, circleSize4, circleSize4)
 
-
-
-
+ let ellipseSize = map(drum, 10, 50, 30, 70)
  
+ fill(50, 52, 92)
+ ellipse(640, 360, ellipseSize, ellipseSize);
+
+
+}
+
+function introEllipse(channel, col, minMap, maxMap) {
 }
 
  //let bar_spacing = height / 10;
@@ -62,3 +67,5 @@ ellipse (250, 450, circleSize3, circleSize3)
    //textAlign(CENTER);
    //textSize(vocal);
    //text(words, width/2, height/3);
+
+   
