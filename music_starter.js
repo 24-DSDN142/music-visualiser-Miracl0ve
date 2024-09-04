@@ -7,13 +7,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
-//hmghnghmgmghnghmn
-//counter(intro of my animation!)
-//let circleSize = map(counter, 0, 40, 40, 220)
-//let circleSize2 = map(counter, -4, 50, -10, 220)
-//let circleSize3 = map(counter, -8, 60, -60, 220)
-//let circleSize4 = map(counter, -12, 70, -90, 220)
-stroke (31, 17, 51)
+
+stroke (255, 255, 255)
 fill (38, 4, 79)
   ellipse (640, 360, counter ** 2 / 100, counter ** 2 / 100)
   fill(31, 17, 51)
@@ -25,10 +20,21 @@ fill (38, 4, 79)
 
  let ellipseSize = map(drum, 10, 50, 30, 70)
  
- fill(50, 52, 92)
+ fill(30, 6, 61)
  ellipse(640, 360, ellipseSize, ellipseSize);
 
+//fill(177, 165, 194)
+ //beginShape();
+ //vertex(609, 501);
+ //bezierVertex(map(bass, 20, 100, 50, 250), 700, 690, 310, 879, 363);
+ //endShape();
 
+ stroke(171, 231, 235)
+fill(89, 78, 120)
+beginShape();
+vertex(674, 717);
+bezierVertex(1333, 645, 632, 80, 1280, -15);
+endShape();
 }
 
 function introEllipse(channel, col, minMap, maxMap) {
