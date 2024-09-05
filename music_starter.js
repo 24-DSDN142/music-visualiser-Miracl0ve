@@ -1,12 +1,13 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  //createCanvas (1280, 720, WEBGL)
+
   //colorMode(HSB, 100)
   background(0)
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+  
 
 stroke (255, 255, 255)
 fill (38, 4, 79)
@@ -19,9 +20,21 @@ fill (38, 4, 79)
 //  ellipse (640, 360, circleSize4, circleSize4)
 
  let ellipseSize = map(drum, 10, 50, 30, 70)
- 
+
  fill(30, 6, 61)
- ellipse(640, 360, ellipseSize, ellipseSize);
+ push()
+ translate(640, 360)
+ellipse(0, 0, ellipseSize, ellipseSize);
+pop()
+
+push()
+translate(640,360)
+rotate(drum)
+fill(216, 232, 232)
+ellipse(0, 0, 80, 40);
+pop()
+
+
 
 //fill(177, 165, 194)
  //beginShape();
@@ -29,12 +42,15 @@ fill (38, 4, 79)
  //bezierVertex(map(bass, 20, 100, 50, 250), 700, 690, 310, 879, 363);
  //endShape();
 
- stroke(171, 231, 235)
-fill(89, 78, 120)
-beginShape();
-vertex(674, 717);
-bezierVertex(1333, 645, 632, 80, 1280, -15);
-endShape();
+
+
+//ellipse()
+//stroke(171, 231, 235)
+//fill(89, 78, 120)
+//beginShape();
+//vertex(674, 717);
+//bezierVertex(1333, 645, 632, 80, 1280, -15);
+//endShape();
 }
 
 function introEllipse(channel, col, minMap, maxMap) {
