@@ -1,42 +1,90 @@
 
+let circleRotate = 0;
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-  //colorMode(HSB, 100)
+
   background(0)
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
-  
+  let img;
+  let firstRun = true
 
-stroke (255, 255, 255)
+  
+function draw_one_frame (word, vocal, drum, bass, other, counter){
+  if(firstRun){
+    img = loadImage('clipart610239.png') //https://www.clipartmax.com/download/m2i8H7m2G6G6Z5A0_saturn-transparent/
+    firstRun = false
+}
+image (img, 640, 360);
+}
+
+
 fill (38, 4, 79)
   ellipse (640, 360, counter ** 2 / 100, counter ** 2 / 100)
   fill(31, 17, 51)
  ellipse (640, 360, counter ** 1 , counter ** 1)
+ fill(66, 5, 8)
+ //ellipse (640, 360, counter *1, counter *1)
 //fill (42, 1, 97)
 //ellipse (640, 360, counter * 3 / 30, counter * 3 / 30)
 //  fill(24, 17, 33)
 //  ellipse (640, 360, circleSize4, circleSize4)
 
- let ellipseSize = map(drum, 10, 50, 30, 70)
+ //let ellipseSize = map(drum, 10, 50, 30, 70)
 
- fill(30, 6, 61)
- push()
- translate(640, 360)
-ellipse(0, 0, ellipseSize, ellipseSize);
-pop()
+
+ //fill(194, 78, 54)
+ //let circle2Size = map(counter, 0, 40, 50, 20);
+ //ellipse(500, 650, 50, circle2Size)
+ //fill(124, 2, 245)
+ //ellipse(500, 500, circle2Size,circle2Size)
+ //fill(194, 78, 54)
+ //ellipse(500, 350, 50,circle2Size)
+ //fill(124, 2, 245)
+ //ellipse(500, 200, circle2Size,circle2Size)
+ //fill(194, 78, 54)
+ //ellipse(500, 50, 50,circle2Size)
+
+ fill(130, 31, 12)
+ let circleSize = map(counter, 0, 80, 60, 20);
+ ellipse(640, 650, 60, circleSize)
+ fill(87, 2, 179)
+ ellipse(640, 500, circleSize,circleSize)
+ fill(130, 31, 12)
+ ellipse(640, 350, 60,circleSize)
+ fill(87, 2, 179)
+ ellipse(640, 200, circleSize,circleSize)
+ fill(130, 31, 12)
+ ellipse(640, 50, 60,circleSize)
+
+
+ 
+
+ //fill(94, 204, 204)
+ //push()
+ //translate(640, 400)
+ //rotate(vocal)
+//ellipse(0, 0, 150, 40);
+//pop()
 
 push()
 translate(640,360)
-rotate(drum)
+rotate(circleRotate)
+circleRotate += 2;
 fill(216, 232, 232)
-ellipse(0, 0, 80, 40);
+ellipse(0, 0, 100, 20);
 pop()
 
+if (counter > 400 && counter < 700) {
+
+}
 
 
-//fill(177, 165, 194)
+
+fill(177, 165, 194)
  //beginShape();
  //vertex(609, 501);
  //bezierVertex(map(bass, 20, 100, 50, 250), 700, 690, 310, 879, 363);
@@ -55,6 +103,14 @@ pop()
 
 function introEllipse(channel, col, minMap, maxMap) {
 }
+
+
+
+
+
+
+
+
 
  //let bar_spacing = height / 10;
    //let bar_height = width / 12;
