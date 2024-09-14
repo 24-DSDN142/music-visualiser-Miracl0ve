@@ -1,6 +1,6 @@
 let img;
 let firstRun = true
-let circleRotate = 0;
+let circleRotate = 1;
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -9,21 +9,68 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     firstRun = false
 }
   
-
   background(0)
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
 
+  stroke (255, 255, 255)
+  fill(0, 0, 0)
+   push()
+   translate(300,230)
+  rotate(circleRotate)
+  circleRotate += 1;
+  //fill(7, 10, 31)
+  ellipse (50, 40, 50, 800)
+  ellipse (50, 50, 100, 700)
+  ellipse (50, 40, 150, 600)
+  stroke (65, 11, 122);
+    ellipse(50, 50, 200, 500);
+    //fill(120, 87, 156);
+    stroke(255);
+    ellipse(50, 40, 250, 400);
+    //fill(0);
+    stroke (65, 11, 122);
+    ellipse(50, 50, 300, 300);
+    fill(0)
+    ellipse(50, 40, 250, 200)
+    //fill(120, 87, 156);
+    stroke (65, 11, 122);
+    ellipse(50, 50, 200, 200);
+    stroke(255)
+    ellipse(50, 40, 150, 150)
+    fill(0);
+    stroke (65, 11, 122);
+   ellipse (50, 50, 100, 100);
+   stroke (255);
+  ellipse(50, 40, 50, 50);
+  pop()
+   
 
-
-  if (counter > 200 && counter < 700) {
+  if (counter > 335 && counter < 10000) {
     push();
-    translate(100, 100)
+    translate(140, 150)
     scale(0.5)
-    image (img, 0, 0);
+   image (img, 0, 0);
+   fill(4, 12, 74);
     pop();
   }
+
+  line
+
+  //if(counter > 0 && counter < 500){
+   // ellipse (300, 240, 200, 100);
+  //}
+  //else if (counter > 600 && counter < 1000){
+   // ellipse (300, 240, 200, 100);
+ // }
+
+  //let ellipseSize = map(counter, 10, 50, 30, 70)
+  //fill(4, 12, 74)
+  //ellipse (300, 240, ellipseSize, 100);
+
+
+  //let ellipseSize = map(counter, 10, 50, 30, 70)
 
 
 //fill (38, 4, 79)
@@ -37,23 +84,14 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //  fill(24, 17, 33)
 //  ellipse (640, 360, circleSize4, circleSize4)
 
- //let ellipseSize = map(drum, 10, 50, 30, 70)
-
-
- //fill(94, 204, 204)
- //push()
- //translate(640, 400)
- //rotate(vocal)
-//ellipse(0, 0, 150, 40);
-//pop()
-
+//stroke (255, 255, 255)
+//fill(0, 0, 0)
 // push()
 // translate(640,360)
-// rotate(circleRotate)
-// circleRotate += 2;
-// fill(216, 232, 232)
-// ellipse(0, 0, 100, 20);
-// pop()
+//rotate(circleRotate)
+//circleRotate += 2;
+ //ellipse(0, 0, 100, 20);
+//pop()
 
 
 
@@ -64,7 +102,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  //beginShape();
  //vertex(609, 501);
  //bezierVertex(map(bass, 20, 100, 50, 250), 700, 690, 310, 879, 363);
- //endShape();
+//endShape();
 
 
 
@@ -84,6 +122,13 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 
+//stroke (255, 255, 255)
+//fill(0, 0, 0)
+// push()
+ //translate(640, 400)
+ //rotate(vocal)
+//ellipse(0, 0, 150, 40);
+//pop()
 
 
 
