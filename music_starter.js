@@ -4,8 +4,20 @@ let circleRotate = 1;
 //let imageRotate = 1;
 let angle = 0;
 let r = 200;
-let vocal_history = [];
 
+let strength;
+let angleOffset;
+let vocal_history = [];
+let drum_history = [];
+
+
+ //translate(310, 250);
+function add_to_history(history, d) {
+  history.push(d);
+  if(history.length >= (width-1)/4) {
+    history.shift();
+  }
+}
 
 function add_to_history(history, d) {
   history.push(d);
@@ -25,6 +37,19 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+  //strokeWeight (9);
+  //stroke(drum, 80, 80);
+
+  //fill(125, 109, 140)
+//lineEnd(LineStart, 300, lineEnd, 300);
+
+
+//for (let i = 1; i <= drumMap; i++){
+  //let lineStep = i + 10
+  //lineEnd(lineStart, lineStep, lineEnd, lineStep);
+//}
+
+
 
 
 let circleSize = map(bass, 0, 80, 40, 200);
@@ -51,57 +76,90 @@ fill(127, 126, 191)
 
 
 push()
+
+translate(305, 155);
+
+if(counter > 340 && counter < 8000){
+  rotate(circleRotate)
+  circleRotate += 0.01;
+}
+
+translate(45, 45);
+
 if(counter > 340 && counter < 8000){
   stroke (255, 255, 255)
   strokeWeight(1);
   fill(0, 0, 0)
-   translate(350, 200)
-  rotate(circleRotate)
-  circleRotate += 0.01;
+
+
+   //translate(350, 200)
+ 
   //fill(7, 10, 31)
-  ellipse (45, 50, 50, 800)
+  ellipse (0, 0, 50, 800)
   //stroke (65, 11, 122);
-  ellipse (45, 45, 100, 700)
+  ellipse (0, 0, 100, 700)
   stroke(255)
-  ellipse (45, 45, 150, 600)
+  ellipse (0, 0, 150, 600)
   //stroke (65, 11, 122);
-    ellipse(45, 45, 200, 500);
+    ellipse(0, 0, 200, 500);
     //fill(120, 87, 156);
     stroke(255);
-    ellipse(45, 45, 250, 250);
+    ellipse(0, 0, 250, 250);
     //fill(0);
 fill(127, 126, 191)
     stroke (65, 11, 122);
-    ellipse(45, 45, circleSize, circleSize);
+    ellipse(0, 0, circleSize, circleSize);
     stroke(255)
     fill(168, 167, 232)
-    ellipse (45, 45, 30, 30)
-    
-   
+    ellipse (0, 0, 30, 30)
   }
-  pop()
+
+
 
 push()
 angleMode (RADIANS)
 add_to_history(vocal_history, vocal);
-  translate(310, 250);
+
   strokeWeight(4);
   stroke(185, 161, 237);
-  //r = vocal
-for(let i = 20; i <= 40; i++){
+
+  angleOffset = 0;
+  strength = 1;
+  for(let i = 20; i <= 40; i++){
   historyVal = vocal_history[vocal_history.length - i]
-r = map(historyVal, 30, 10, 10, 40)
-  let angle = map(i, 10, 20, 10, PI*6)
-  let x = r * cos(angle);
-  let y = r * sin(angle);
+  r = map(historyVal, 30, 10, 10, 40)
+  let angle = map(i, 10, 20, 10, PI * 6)
+  let x = strength * r * cos(angle + angleOffset);
+  let y = strength * r * sin(angle + angleOffset);
   point(x, y);
 }
   angle += 0.05; //random(-0.1, 0.1);
   r -= random(1, 1);
-}
 pop()
 
+push()
+angleMode (RADIANS)
+add_to_history(drum_history, drum);
+  translate(200, 200);
+  strokeWeight(7);
+  stroke(185, 161, 237);
+  
+angleOffset = PI;
+strength = 3.5;
+for(let i = 10; i <= 50; i++) {
+  historyVal = drum_history[drum_history.length - i]
+r = map(historyVal, 30, 50, 10, 60)
+  let angle = map(i, 10, 20, 20, PI * 2)
+  let x = strength * r * cos(angle + angleOffset);
+  let y = strength * r * sin(angle + angleOffset);
+  point(x, y);
+}
+  angle += 0.05; //random(-0.1, 0.1);
+  r -= random(1, 1);
+pop()
 
+pop()
+}
 //for (let i = 1; i <= 10; i ++){
 //ellipse()
 //}
