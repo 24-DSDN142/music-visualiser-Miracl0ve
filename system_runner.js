@@ -1,5 +1,6 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
+const canvasWidth = 640;
+const canvasHeight = 480;
+
 
 
 let mainCanvas;
@@ -76,6 +77,7 @@ function setup() {
   songButton.parent('button1Container');
   songButton.elt.disabled = true;
 
+
   vol1 = [];
   vol2 = [];
   vol3 = [];
@@ -119,7 +121,7 @@ function switchRunMode() {
     slider2.elt.disabled = true;
     slider3.elt.disabled = true;
     slider4.elt.disabled = true;
-
+    
     editorMode = false;
     let now = millis();
     songEpoch = now + (debugFastRefresh ? 0 : 5000);
