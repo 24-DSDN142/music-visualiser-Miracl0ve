@@ -1,15 +1,18 @@
 let img;
-let firstRun = true
+let firstRun = true;
 let circleRotate = 1;
 //let imageRotate = 1;
 let angle = 0;
 let r = 200;
-
 let strength;
 let angleOffset;
 let vocal_history = [];
 let drum_history = [];
-
+let other_history = [];
+//let size = 100;
+//let xPosArray = [50, 300, 500];
+//let dx = 1;
+//let x = 100;
 
  //translate(310, 250);
 function add_to_history(history, d) {
@@ -26,10 +29,18 @@ function add_to_history(history, d) {
   }
 }
 
+
+function add_to_history(history, d) {
+  history.push(d);
+  if(history.length >= (width-1)/4) {
+    history.shift();
+  }
+}
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   if(firstRun){
-    img = loadImage('moon-png-44673.png') //https://www.clipartmax.com/download/m2i8H7m2G6G6Z5A0_saturn-transparent/
+    img = loadImage('clipart610239.png') //https://www.clipartmax.com/download/m2i8H7m2G6G6Z5A0_saturn-transparent/
     firstRun = false
 }
 
@@ -37,6 +48,19 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+     
+  //fill(100, 0, 240)
+  //ellipse(x, 50, bass, 30);
+  //ellipse(x, 100, bass, 30);
+  //x = x + dx;
+  //if( x > width){
+   // dx = -1;
+ //}
+ //if (x < 0){
+   //dx = 1;
+// }
+
+
   //strokeWeight (9);
   //stroke(drum, 80, 80);
 
@@ -52,9 +76,49 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 
-let circleSize = map(bass, 0, 80, 40, 200);
-stroke(127, 126, 191)
-fill(127, 126, 191)
+
+push()
+ if(counter > 0 && counter < 335){
+  fill(217, 201, 255);
+  ellipse (350, 200, counter *2 / 10, counter *2 / 10)
+  }
+  pop()
+   //ellipse (counter, 240, 200, 100);
+
+  //else if (counter > 600 && counter < 1000){
+    //ellipse (640, 360, counter ** 2 / 100, counter ** 2 / 100)
+    //ellipse (counter, 240, 200, 100);
+  //}
+
+  let irisSize = map(vocal, 0, 80, 40, 200);
+
+  let bassMap = map(bass, 0, 60, 80, 20)
+
+
+
+
+  if(counter > 2400 && counter < 8000){
+  stroke(255)
+  fill(217, 201, 255);
+  ellipse(500, 250, bassMap, bassMap);
+  fill(0)
+  ellipse(450, 400, bassMap, bassMap);
+  ellipse(150, 100, bassMap, bassMap);
+  fill(217, 201, 255);
+  ellipse(100, 250, bassMap, bassMap);
+  fill(0)
+  ellipse(450, 100, bassMap, bassMap);
+  
+  ellipse(150, 400, bassMap, bassMap);
+  fill(217, 201, 255);
+  ellipse(300, 30, bassMap, bassMap);
+  fill(217, 201, 255);
+  ellipse(300, 450, bassMap, bassMap);
+  }
+
+
+//stroke(127, 126, 191)
+//fill(127, 126, 191)
 
 
 
@@ -68,8 +132,8 @@ fill(127, 126, 191)
 
 //push()
 //if (counter > 335 && counter < 1020) {
- // translate(100, 100)
-  //scale(0.2)
+  //translate(100, 100)
+ // scale(0.2)
   //image (img, 0, 0);
 //}
 //pop()
@@ -91,30 +155,43 @@ if(counter > 340 && counter < 8000){
   strokeWeight(1);
   fill(0, 0, 0)
 
-
+  
+  
    //translate(350, 200)
  
   //fill(7, 10, 31)
   ellipse (0, 0, 50, 800)
-  //stroke (65, 11, 122);
   ellipse (0, 0, 100, 700)
   stroke(255)
   ellipse (0, 0, 150, 600)
   //stroke (65, 11, 122);
+  stroke (65, 11, 122);
     ellipse(0, 0, 200, 500);
     //fill(120, 87, 156);
     stroke(255);
     ellipse(0, 0, 250, 250);
     //fill(0);
-fill(127, 126, 191)
-    stroke (65, 11, 122);
-    ellipse(0, 0, circleSize, circleSize);
-    stroke(255)
-    fill(168, 167, 232)
-    ellipse (0, 0, 30, 30)
+    //if (counter > 340 && counter < 700){
+      fill(46, 11, 99);
+      stroke (65, 11, 122);
+     ellipse(0, 0, irisSize, irisSize);
+    //}
+    if(counter > 700 && counter < 1025){
+      stroke(255);
+    fill(65, 32, 145);
+    ellipse (0, 0, irisSize, irisSize)}
+     else if (counter > 1025 && counter < 1360){
+     fill(126, 106, 173);
+     ellipse (0, 0, irisSize, irisSize)}
+     if (counter > 1360 && counter < 1700){
+      fill(81, 39, 112);
+      ellipse (0, 0, irisSize, irisSize) }
+      else if (counter > 1700 && counter < 2050){
+        fill(127, 126, 191);
+        ellipse (0, 0, irisSize, irisSize)
+     }
+
   }
-
-
 
 push()
 angleMode (RADIANS)
@@ -139,17 +216,17 @@ pop()
 
 push()
 angleMode (RADIANS)
-add_to_history(drum_history, drum);
-  translate(200, 200);
-  strokeWeight(7);
-  stroke(185, 161, 237);
-  
-angleOffset = PI;
-strength = 3.5;
-for(let i = 10; i <= 50; i++) {
-  historyVal = drum_history[drum_history.length - i]
-r = map(historyVal, 30, 50, 10, 60)
-  let angle = map(i, 10, 20, 20, PI * 2)
+add_to_history(other_history, other);
+
+  strokeWeight(10);
+  stroke(255);
+
+  angleOffset = PI;
+  strength = 2.5;
+  for(let i = 20; i <= 40; i++){
+  historyVal = other_history[other_history.length - i]
+  r = map(historyVal, 30, 10, 10, 40)
+  let angle = map(i, 10, 20, 10, PI * 69)
   let x = strength * r * cos(angle + angleOffset);
   let y = strength * r * sin(angle + angleOffset);
   point(x, y);
@@ -158,8 +235,34 @@ r = map(historyVal, 30, 50, 10, 60)
   r -= random(1, 1);
 pop()
 
+
+push()
+if(counter > 340 && counter < 8000){
+angleMode (RADIANS)
+add_to_history(drum_history, drum);
+  translate(200, 45);
+  strokeWeight(1);
+  stroke(255);
+  
+angleOffset = PI;
+strength = 4.5;
+for(let i = 10; i <= 50; i++) {
+  historyVal = drum_history[drum_history.length - i]
+r = map(historyVal, 30, 50, 10, 60)
+  let angle = map(i, 20, 30, 50, PI * 2)
+  let x = strength * r * cos(angle + angleOffset);
+  let y = strength * r * sin(angle + angleOffset);
+  point(x, y);
+}
+  angle += 0.05; //random(-0.1, 0.1);
+  r -= random(1, 1);
 pop()
 }
+
+}
+
+
+
 //for (let i = 1; i <= 10; i ++){
 //ellipse()
 //}
@@ -231,10 +334,6 @@ pop()
 // function introEllipse(channel, col, minMap, maxMap) {
 // }
 
-
-
-
-
 //stroke (255, 255, 255)
 //fill(0, 0, 0)
 // push()
@@ -242,41 +341,3 @@ pop()
  //rotate(vocal)
 //ellipse(0, 0, 150, 40);
 //pop()
-
-
-
-
- //let bar_spacing = height / 10;
-   //let bar_height = width / 12;
-   //let bar_pos_x = width / 2;
-
-  // vocal bar is red
-   //fill(200, 0, 0);
-   //rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-   //fill(0);
-   //text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-   // drum bar is green
-   //fill(0, 200, 0);
-   //rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-   //fill(0);
-   //text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-   // bass bar is blue
-   //fill(50, 50, 240);
-   //rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-   //fill(0);
-   //text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-   // other bar is white
-   //fill(200, 200, 200);
-   //rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-   //fill(0);
-   //text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-   //fill(255, 255, 0);
- 
-   // display "words"
-   //textAlign(CENTER);
-   //textSize(vocal);
-   //text(words, width/2, height/3);
-
